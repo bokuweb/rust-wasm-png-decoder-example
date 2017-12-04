@@ -1,0 +1,16 @@
+[package]
+name = "rust-wasm-png-decoder"
+version = "0.1.0"
+authors = ["bokuweb <bokuweb12@gmail.com>"]
+
+[profile.release]
+opt-level = 3
+debug = false
+rpath = false
+lto = false
+
+[dependencies]
+png="^0.11.0"
+serde_derive = "^1.0.21"
+serde = "^1.0.21"
+serde_json = "^1.0.6"

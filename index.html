@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/frappe-charts@0.0.8/dist/frappe-charts.min.iife.js"></script>
+    <title></title>
+</head>
+
+<body>
+    <div id="chart"></div>
+    <script>
+        const data = {
+            labels: [
+                '0.png',
+                '1.png',
+                '2.png',
+                '3.png',
+                '4.png',
+                '5.png',
+                '6.png',
+                '7.png',
+                '8.png',
+                '9.png',
+            ],
+            datasets: [
+                {
+                    title: "rust-png wasm",
+                    values: [
+                        10912,
+                        6913,
+                        12349,
+                        8360,
+                        8407,
+                        5732,
+                        6643,
+                        2220,
+                        11944,
+                        5229,
+                    ]
+                },
+                {
+                    title: "pngjs",
+                    values: [
+                        2882,
+                        2839,
+                        2839,
+                        2801,
+                        6935,
+                        2414,
+                        7138,
+                        1957,
+                        2929,
+                        10119,
+                    ]
+                }
+            ]
+        }
+
+        const chart = new Chart({
+            parent: "#chart", // or a DOM element
+            title: "rust-png wasm - pngjs",
+            data: data,
+            type: 'bar', // or 'line', 'scatter', 'pie', 'percentage'
+            height: 250,
+
+            colors: ['#7cd6fd', '#743ee2'],
+
+            format_tooltip_x: d => (d + '').toUpperCase(),
+            format_tooltip_y: d => d + ' ops/sec'
+        })
+    </script>
+</body>
+
+</html>

@@ -22,10 +22,13 @@ module.exports = (buf) => {
     const json = String.fromCharCode.apply(null, resultBuf.slice(0, resultSize));
     mod.exports.free(resultPtr, resultSize)
     const result = JSON.parse(json);
+    const data = new Uint8Array(result.len);
+    const target = new Uint8Array(mod.exports.memory.buffer, result.ptr, result.len);
+    data.set(target);
     const ret = {
         width: result.width,
         height: result.height,
-        buf: new Uint8Array(mod.exports.memory.buffer, result.ptr, result.len),
+        buf: data
     }
     mod.exports.free(result.ptr, result.len);
     return ret;
